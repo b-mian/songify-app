@@ -12,9 +12,19 @@ html, body {
     margin: 0 25vw;
 }
 
-.tracks-container {
-    width: 100vw;
-    height: 164px;
+.search-options img {
+    height: 64px;
+    width: 64px;
+}
+
+.search-options li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.track-btn {
+    width: 300px !important;
+    height: 70px;
 }
 
 /* .homepage-row {
@@ -43,6 +53,18 @@ li {
 
 .form-control {
     width: 50vw;
+}
+
+.form-group option {
+    width: 50vw;
+    height: 128px;
+}
+
+.tracks-container {
+    height: 400px;
+    overflow-y: scroll;
+    display: none;
+    margin-top: 15px;
 }
 
 

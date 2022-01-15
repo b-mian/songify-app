@@ -4,8 +4,8 @@ const Track1 = ({track}) => {
     return (
         <div className="tracks-container">
             <img src={track.albumUrl} style={{height: "64px", width: "64px"}} alt="" />
-            <h4>{track.title}</h4>
-            <h5>{track.artist}</h5>
+            <h6>  {track.title}  </h6>
+            <h6>  {track.artist}  </h6>
         </div>
     )
 }

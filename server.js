@@ -62,7 +62,6 @@ app.post('/login', (req, res) => {
   .catch(() => {
     res.sendStatus(400);
   })
-
   })
 })
 

@@ -16,6 +16,8 @@ const Forms = ({code}) => {
     const accessToken = useAuth(code);
     const [search1, setSearch1] = useState("");
     const [search2, setSearch2] = useState("");
+    const [song1, setSong1] = useState();
+    const [song2, setSong2] = useState();
     const [searchResults1, setSearchResults1] = useState([]);
     const [searchResults2, setSearchResults2] = useState([]);
     // perform a check on whether the access token is null; if not, set it
@@ -73,6 +75,9 @@ const Forms = ({code}) => {
 
     }, [search2, accessToken])
 
+    
+    
+
     return (
         <div className="forms-container">
             <h1 className="landing-title">Songify</h1>
@@ -81,7 +86,7 @@ const Forms = ({code}) => {
                     <li>Pick any two tracks you like</li>
                     <li>Click the "Create Playlist" button</li>
                     <li>Export your playlist to Spotify</li>
-                    <li>Happy listening!</li>
+                    <li>Enjoy your listening time!</li>
                 </ol>
             </div>
             <form className="search-form">
@@ -89,18 +94,24 @@ const Forms = ({code}) => {
                     <label for="track1">Choose Track 1</label>
                     <input type="text" className="form-control mt-3" onChange={e => setSearch1(e.target.value)} id="track1" placeholder="Search Spotify"></input>
                 </div>
-                <div className="flex-grow-1 my-2">
+                <div className="tracks-container" style={{display: search1 === "" ? "none" : "block"}}>
                     {searchResults1.map(track => (
-                        <Track1 track={track} key={track.uri} />
+                        <ul className="search-options" cursor="pointer">
+                            <li cursor="pointer"><button><img src={track.albumUrl} style={{height: "64px", width: "64px"}} alt="" /></button></li>
+                            <li className="mr-4" cursor="pointer"><button className="btn btn-success"><h6>{track.title}</h6><h6>{track.artist}</h6></button></li>
+                        </ul>
                     ))}
                 </div>
                 <div className="form-group mt-4">
                     <label for="track2">Choose Track 2</label>
                     <input type="text" className="form-control mt-3" id="track2" onChange={e => setSearch2(e.target.value)} placeholder="Search Spotify"></input>
                 </div>
-                <div className="flex-grow-1 my-2">
+                <div className="tracks-container" style={{display: search2 === "" ? "none" : "block"}}>
                     {searchResults2.map(track => (
-                        <Track2 track={track} key={track.uri} />
+                        <ul className="search-options" cursor="pointer">
+                            <li cursor="pointer"><button><img src={track.albumUrl} style={{height: "64px", width: "64px"}} alt="" /></button></li>
+                            <li className="mr-4" cursor="pointer"><button className="btn btn-success track-btn"><h6>{track.title}</h6><h6 className="ml-4">{track.artist}</h6></button></li>
+                        </ul>
                     ))}
                 </div>
                 <Link to="/">
