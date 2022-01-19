@@ -3,8 +3,9 @@ import useAuth from './useAuth';
 import { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import SpotifyWebApi from 'spotify-web-api-node';
-import Track1 from './Track1';
+import Track from './Track';
 import Track2 from './Track2';
+import Dropdown from 'react-bootstrap/Dropdown';
 
 // create new instance of Spotify API with given client credentials
 const spotifyAPI = new SpotifyWebApi({
@@ -16,8 +17,9 @@ const Forms = ({code}) => {
     const accessToken = useAuth(code);
     const [search1, setSearch1] = useState("");
     const [search2, setSearch2] = useState("");
-    const [song1, setSong1] = useState();
-    const [song2, setSong2] = useState();
+    const [song1, setSong1] = useState(false);
+    const [song2, setSong2] = useState(false);
+    const [selected, setSelected] = useState(false);
     const [searchResults1, setSearchResults1] = useState([]);
     const [searchResults2, setSearchResults2] = useState([]);
     // perform a check on whether the access token is null; if not, set it
@@ -32,6 +34,7 @@ const Forms = ({code}) => {
         if (!search1) {
             return setSearchResults1([]);
         }
+        setSong1(false);
         // testing search results
         console.log(searchResults1);
         spotifyAPI.searchTracks(search1).then(res => {
@@ -56,7 +59,7 @@ const Forms = ({code}) => {
         if (!search2) {
             return setSearchResults2([]);
         }
-        console.log(searchResults2);
+        setSong2(false);
         spotifyAPI.searchTracks(search2).then(res => {
             setSearchResults2(res.body.tracks.items.map(track => {
                 // return the smallest album image by cycling through all images
@@ -75,7 +78,10 @@ const Forms = ({code}) => {
 
     }, [search2, accessToken])
 
-    
+    useEffect(() => {
+        console.log(song2);
+        console.log(song1);
+    }, [song2, song1])
     
 
     return (
@@ -94,26 +100,46 @@ const Forms = ({code}) => {
                     <label for="track1">Choose Track 1</label>
                     <input type="text" className="form-control mt-3" onChange={e => setSearch1(e.target.value)} id="track1" placeholder="Search Spotify"></input>
                 </div>
-                <div className="tracks-container" style={{display: search1 === "" ? "none" : "block"}}>
-                    {searchResults1.map(track => (
-                        <ul className="search-options" cursor="pointer">
-                            <li cursor="pointer"><button><img src={track.albumUrl} style={{height: "64px", width: "64px"}} alt="" /></button></li>
-                            <li className="mr-4" cursor="pointer"><button className="btn btn-success"><h6>{track.title}</h6><h6>{track.artist}</h6></button></li>
-                        </ul>
-                    ))}
-                </div>
+                {song1 === false ?
+                    <div className="tracks-container" style={{display: search1 === "" ? "none" : "block"}}>
+                        {searchResults1.map(tracks => (
+                            <Dropdown.Item href="#" onClick={() => setSong1(tracks)}>
+                                <img src={tracks.albumUrl} style={{height: "64px", width: "64px"}} alt="" />
+                                <h5 className="track-title">{tracks.title} by </h5>
+                                <h5 className="track-artist">{tracks.artist}</h5>
+                            </Dropdown.Item> 
+                        ))}
+                    </div>
+                :
+                    <div className="chosen-song" style={{display: song1 !== {} ? "block" : "none"}}>
+                        <img src={song1.albumUrl} style={{height: "64px", width: "64px"}} alt="" />
+                        <h5 className="track-title">{song1.title} by </h5>
+                        <h5 className="track-artist">{song1.artist}</h5>
+                    </div>
+
+                }
                 <div className="form-group mt-4">
                     <label for="track2">Choose Track 2</label>
                     <input type="text" className="form-control mt-3" id="track2" onChange={e => setSearch2(e.target.value)} placeholder="Search Spotify"></input>
                 </div>
-                <div className="tracks-container" style={{display: search2 === "" ? "none" : "block"}}>
-                    {searchResults2.map(track => (
-                        <ul className="search-options" cursor="pointer">
-                            <li cursor="pointer"><button><img src={track.albumUrl} style={{height: "64px", width: "64px"}} alt="" /></button></li>
-                            <li className="mr-4" cursor="pointer"><button className="btn btn-success track-btn"><h6>{track.title}</h6><h6 className="ml-4">{track.artist}</h6></button></li>
-                        </ul>
-                    ))}
-                </div>
+                {song2 === false ?
+                    <div className="tracks-container" style={{display: search2 === "" ? "none" : "block"}}>
+                        {searchResults2.map(tracks => (
+                            <Dropdown.Item href="#" onClick={() => setSong2(tracks)}>
+                                <img src={tracks.albumUrl} style={{height: "64px", width: "64px"}} alt="" />
+                                <h5 className="track-title">{tracks.title} by </h5>
+                                <h5 className="track-artist">{tracks.artist}</h5>
+                            </Dropdown.Item> 
+                        ))}
+                    </div>
+                :
+                    <div className="chosen-song" style={{display: song2 !== false ? "block" : "none"}}>
+                        <img src={song2.albumUrl} style={{height: "64px", width: "64px"}} alt="" />
+                        <h5 className="track-title">{song2.title} by </h5>
+                        <h5 className="track-artist">{song2.artist}</h5>
+                    </div>
+
+                }
                 <Link to="/">
                     <button type="submit" className="btn btn-success mt-3">Create Playlist</button>
                 </Link>

@@ -67,4 +67,18 @@ li {
     margin-top: 15px;
 }
 
+.track-artist, .track-title {
+    display: inline-block;
+}
+
+.track-title {
+    margin-left: 20px;
+    margin-right: 5px;
+}
+
+.chosen-song {
+    padding-top: 25px;
+}
+
+
 
