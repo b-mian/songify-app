@@ -19,7 +19,6 @@ const Forms = ({code}) => {
     const [search2, setSearch2] = useState("");
     const [song1, setSong1] = useState(false);
     const [song2, setSong2] = useState(false);
-    const [selected, setSelected] = useState(false);
     const [searchResults1, setSearchResults1] = useState([]);
     const [searchResults2, setSearchResults2] = useState([]);
     // perform a check on whether the access token is null; if not, set it
@@ -79,8 +78,7 @@ const Forms = ({code}) => {
     }, [search2, accessToken])
 
     useEffect(() => {
-        console.log(song2);
-        console.log(song1);
+        
     }, [song2, song1])
     
 
@@ -111,10 +109,11 @@ const Forms = ({code}) => {
                         ))}
                     </div>
                 :
-                    <div className="chosen-song" style={{display: song1 !== {} ? "block" : "none"}}>
+                    <div className="chosen-song" style={{display: (song1 !== false) ? "block" : "none"}}>
                         <img src={song1.albumUrl} style={{height: "64px", width: "64px"}} alt="" />
                         <h5 className="track-title">{song1.title} by </h5>
                         <h5 className="track-artist">{song1.artist}</h5>
+                        <button className="cancel-song" onClick={() => setSong1(false)}>X</button>
                     </div>
 
                 }
@@ -133,10 +132,11 @@ const Forms = ({code}) => {
                         ))}
                     </div>
                 :
-                    <div className="chosen-song" style={{display: song2 !== false ? "block" : "none"}}>
+                    <div className="chosen-song" style={{display: (song2 !== false) ? "block" : "none"}}>
                         <img src={song2.albumUrl} style={{height: "64px", width: "64px"}} alt="" />
                         <h5 className="track-title">{song2.title} by </h5>
                         <h5 className="track-artist">{song2.artist}</h5>
+                        <button className="btn cancel-song" onClick={() => setSong2(false)}>X</button>
                     </div>
 
                 }
