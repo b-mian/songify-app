@@ -3,8 +3,7 @@ import useAuth from './useAuth';
 import { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import SpotifyWebApi from 'spotify-web-api-node';
-import Track from './Track';
-import Track2 from './Track2';
+import CreatePlaylist from './CreatePlaylist';
 import Dropdown from 'react-bootstrap/Dropdown';
 
 // create new instance of Spotify API with given client credentials
@@ -15,12 +14,17 @@ const spotifyAPI = new SpotifyWebApi({
 const Forms = ({code}) => {
     // used for post request to server with auth code
     const accessToken = useAuth(code);
+
     const [search1, setSearch1] = useState("");
     const [search2, setSearch2] = useState("");
+
     const [song1, setSong1] = useState(false);
     const [song2, setSong2] = useState(false);
+
     const [searchResults1, setSearchResults1] = useState([]);
     const [searchResults2, setSearchResults2] = useState([]);
+
+    const [showPlaylist, setShowPlaylist] = useState(false);
     // perform a check on whether the access token is null; if not, set it
     useEffect(() => {
         if (!accessToken) {
@@ -28,6 +32,7 @@ const Forms = ({code}) => {
         }
         spotifyAPI.setAccessToken(accessToken);
     }, [accessToken])
+
     // call to api based on search query; return album metadata into an array
     useEffect(() => {
         if (!search1) {
@@ -140,9 +145,21 @@ const Forms = ({code}) => {
                     </div>
 
                 }
-                <Link to="/">
-                    <button type="submit" className="btn btn-success mt-3">Create Playlist</button>
-                </Link>
+                {showPlaylist === false ?
+                    <Link to="/">
+                        <button type="submit" onClick={() => setShowPlaylist(!showPlaylist)} className="btn btn-success mt-3">Create Playlist</button>
+                    </Link>
+                :
+                    <div style={{display: showPlaylist === true ? "block" : "none"}}>
+                        <Link to="/">
+                            <button type="submit" onClick={() => setShowPlaylist(!showPlaylist)} className="btn btn-success mt-3">Create Playlist</button>
+                        </Link>
+                        <CreatePlaylist code={code} trackOne={song1} trackTwo={song2} /> 
+                    </div>
+                    
+                }
+                
+                
             </form>
         </div>
     )

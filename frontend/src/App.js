@@ -11,7 +11,6 @@ function App() {
     <Router>
         <Routes>
           <Route path="/" element={code ? <Forms code={code} /> : <LandingPage />}></Route>
-          {/* <Route path="/create" element={<Forms code={code} />}></Route> */}
         </Routes>
     </Router>
   );
