@@ -25,13 +25,13 @@ const Forms = ({code}) => {
 
     const [showPlaylist, setShowPlaylist] = useState(false);
     // perform a check on whether the access token is null; if not, set it
-    spotifyAPI.setAccessToken(accessToken);
+    
     useEffect(() => {
         if (!accessToken) {
             return;
         }
-        
-    }, [])
+        spotifyAPI.setAccessToken(accessToken);
+    }, [accessToken])
 
     // call to api based on search query; return album metadata into an array
     useEffect(() => {
