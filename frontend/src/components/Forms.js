@@ -39,7 +39,6 @@ const Forms = ({code}) => {
             setCreated(false);
             setSong1(null);
             setSong2(null);
-            setSearchResults1([]);
         }
         // testing search results
         console.log(searchResults1);
@@ -69,7 +68,6 @@ const Forms = ({code}) => {
             setCreated(false);
             setSong1(null);
             setSong2(null);
-            setSearchResults2([]);
         }
         spotifyAPI.searchTracks(search2).then(res => {
             setSearchResults2(res.body.tracks.items.map(track => {
