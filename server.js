@@ -25,7 +25,7 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("frontend/build"));
 }
 
-app.post('http://localhost:3001/refresh', (req, res) => {
+app.post('/refresh', (req, res) => {
   const refreshToken = req.body.refreshToken;
   let credentials = {
     clientId: client_id,
@@ -47,7 +47,7 @@ app.post('http://localhost:3001/refresh', (req, res) => {
 
 })
 
-app.post('http://localhost:3001/login', (req, res) => {
+app.post('/login', (req, res) => {
   const code = req.body.code;
   console.log(code);
   let credentials = {
