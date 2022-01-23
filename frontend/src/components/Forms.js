@@ -37,7 +37,7 @@ const Forms = ({code}) => {
     useEffect(() => {
         if (!search1) {
             setPlaylist([]);
-            setCreated(!created);
+            setCreated(false);
             setSong1(null);
             setSong2(null);
             return setSearchResults1([]);
@@ -68,7 +68,7 @@ const Forms = ({code}) => {
     useEffect(() => {
         if (!search2) {
             setPlaylist([]);
-            setCreated(!created);
+            setCreated(false);
             setSong1(null);
             setSong2(null);
             return setSearchResults2([]);
@@ -96,9 +96,10 @@ const Forms = ({code}) => {
 
     const handlePlaylist = () => {
         if (!song1 || !song2) {
+            setCreated(false);
             return;
         }
-        setCreated(!created);
+        setCreated(true);
         spotifyAPI.getRecommendations({
             min_energy: 0.4,
             seed_artists: [song1.artistID, song2.artistID],
@@ -127,10 +128,12 @@ const Forms = ({code}) => {
 
     const exportPlaylist = () => {
         if (!song1 || !song2) {
+            setCreated(false);
             setPlaylist([]);
             return;
         }
-        spotifyAPI.createPlaylist('Songify Playlist', { 'description': 'My custom playlist from that cool Songify app', 'public': false })
+        let playlistName = prompt("Give your playlist a name...");
+        spotifyAPI.createPlaylist(playlistName, { 'description': 'My custom playlist from that cool Songify app', 'public': false })
         .then(data => {
             const playlistID = data.body.id;
             spotifyAPI.addTracksToPlaylist(playlistID, playlist.map(track => track.uri))

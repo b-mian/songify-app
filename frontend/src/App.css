@@ -128,5 +128,14 @@ li {
     color: rgb(121, 59, 59);
 }
 
+.playlist-container {
+    width: 50vw;
+    border: 1px solid rgb(22, 78, 22);
+}
+
+.playlist-container div {
+    border: 1px solid rgb(22, 78, 22);
+}
+
 
 

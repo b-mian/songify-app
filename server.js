@@ -1,4 +1,5 @@
 // requiring these modules
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
@@ -15,15 +16,16 @@ app.use(bodyParser.json());
 const port = process.env.PORT || 3001;
 
 // Your Spotify developer client id
-let client_id = '4362dfe6f5c244dbbc69cff0883518c4'; 
+let client_id = process.env.client_id; 
+let client_secret = process.env.client_secret;
 // Where to re-direct after login
-let redirect_uri = 'http://localhost:3000'; 
+let redirect_uri = process.env.redirect_uri; 
 
 app.post('/refresh', (req, res) => {
   const refreshToken = req.body.refreshToken;
   let credentials = {
     clientId: client_id,
-    clientSecret: '1b0d43167e72418ab2e44ff384357c16',
+    clientSecret: client_secret,
     redirectUri: redirect_uri,
   };
   const spotifyAPI = new SpotifyWebApi(credentials);
@@ -46,7 +48,7 @@ app.post('/login', (req, res) => {
   console.log(code);
   let credentials = {
     clientId: client_id,
-    clientSecret: '1b0d43167e72418ab2e44ff384357c16',
+    clientSecret: client_secret,
     redirectUri: redirect_uri
   };
   const spotifyAPI = new SpotifyWebApi(credentials);
