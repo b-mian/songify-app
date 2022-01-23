@@ -3,9 +3,9 @@ html, body {
 }
 
 .landing-container, .forms-container {
-    background-color: rgb(138, 187, 138);
+    background: linear-gradient(rgb(116, 190, 116), rgb(117, 167, 117), rgb(82, 122, 82));
     min-height: 100vh;
-    width: 100%;
+    width: 100vw;
 }
 
 .steps-container {
@@ -46,7 +46,11 @@ html, body {
     font-size: 96px;
     color: rgb(90, 146, 90);
     text-align: center;
-    padding-top: 200px;
+    padding-top: 100px;
+}
+
+.landing-subheading {
+    text-align: center;
 }
 
 li {
@@ -61,7 +65,8 @@ li {
 
 .headphone {
     margin-top: 40px;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
+    transform: rotate(0deg);
 }
 
 
@@ -72,12 +77,12 @@ li {
 
 .btn-success {
     background-color:rgb(90, 146, 90);
-    border: 2px solid rgb(67, 102, 67);
+    border: 3px solid rgb(67, 102, 67);
     z-index: 100;
 }
 
 .btn-success:hover {
-    border: 2px solid lightgreen;
+    border: 3px solid lightgreen;
     color: lightgreen;
 }
 
@@ -111,8 +116,16 @@ li {
 }
 
 .chosen-song {
-    padding-top: 25px;
-    border: 3px solid rgb(22, 78, 22)
+    margin-top: 25px;
+    border: 5px solid rgb(22, 78, 22);
+    border-radius: 6px;
+}
+
+.cancel-song {
+    float: right;
+    margin-top: -2px;
+    font-weight: bolder;
+    color: rgb(121, 59, 59);
 }
 
 

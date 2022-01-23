@@ -20,7 +20,7 @@ const Forms = ({code}) => {
     const [playlist, setPlaylist] = useState([]);
     const [song1, setSong1] = useState(null);
     const [song2, setSong2] = useState(null);
-    const [songIsSet, setSongIsSet] = useState(false);
+    const [created, setCreated] = useState(false);
     const [searchResults1, setSearchResults1] = useState([]);
     const [searchResults2, setSearchResults2] = useState([]);
 
@@ -36,6 +36,10 @@ const Forms = ({code}) => {
     // call to api based on search query; return album metadata into an array
     useEffect(() => {
         if (!search1) {
+            setPlaylist([]);
+            setCreated(!created);
+            setSong1(null);
+            setSong2(null);
             return setSearchResults1([]);
         }
         setSong1(null);
@@ -63,6 +67,10 @@ const Forms = ({code}) => {
     // call to api based on second search query; return album metadata into an array
     useEffect(() => {
         if (!search2) {
+            setPlaylist([]);
+            setCreated(!created);
+            setSong1(null);
+            setSong2(null);
             return setSearchResults2([]);
         }
         setSong2(null);
@@ -87,7 +95,10 @@ const Forms = ({code}) => {
     }, [search2, accessToken])
 
     const handlePlaylist = () => {
-        
+        if (!song1 || !song2) {
+            return;
+        }
+        setCreated(!created);
         spotifyAPI.getRecommendations({
             min_energy: 0.4,
             seed_artists: [song1.artistID, song2.artistID],
@@ -114,12 +125,14 @@ const Forms = ({code}) => {
         })
     }
 
-    const createPlaylist = () => {
-        
+    const exportPlaylist = () => {
+        if (!song1 || !song2) {
+            setPlaylist([]);
+            return;
+        }
         spotifyAPI.createPlaylist('Songify Playlist', { 'description': 'My custom playlist from that cool Songify app', 'public': false })
         .then(data => {
             const playlistID = data.body.id;
-            let trackList = []
             spotifyAPI.addTracksToPlaylist(playlistID, playlist.map(track => track.uri))
             .then(res => {
                 console.log('Added tracks to playlist!');
@@ -137,14 +150,7 @@ const Forms = ({code}) => {
     return (
         <div className="forms-container">
             <h1 className="landing-title">Songify</h1>
-            <div className="mt-4 align-self-center instructions-container">
-                <ol className="instructions">
-                    <li>Pick any two tracks you like</li>
-                    <li>Click the "Create Playlist" button</li>
-                    <li>Export your playlist to Spotify</li>
-                    <li>Enjoy your listening time!</li>
-                </ol>
-            </div>
+            <h3 className="landing-subheading">Custom playlists based on two songs of your choice</h3>
             <form className="search-form">
                 <div className="form-group mt-4">
                     <label for="track1">Choose Track 1</label>
@@ -165,7 +171,7 @@ const Forms = ({code}) => {
                         <img src={song1.albumUrl} style={{height: "64px", width: "64px"}} alt="" />
                         <h5 className="track-title">{song1.title} by </h5>
                         <h5 className="track-artist">{song1.artist}</h5>
-                        <button className="cancel-song" onClick={() => setSong1(null)}>X</button>
+                        <button className="btn cancel-song" onClick={() => setSong1(null)}>X</button>
                     </div>
 
                 }
@@ -200,22 +206,24 @@ const Forms = ({code}) => {
                 {((song1 !== null) && (song2 !== null) && (playlist !== [])) ?
                     <div>
                         <div className="playlist-container">
-                        {playlist.map(track => (
-                            <div key={track.id}>
-                                <h5 className="track-title">{track.title} by </h5>
-                                <h5 className="track-artist">{track.artist}</h5>
-                            </div>
-                        ))} 
-                            <Link to="/">
-                                <button className="btn btn-primary btn-lg" onClick={() => createPlaylist()}>Export to Spotify</button>
-                            </Link>
+                            {playlist.map(track => (
+                                <div key={track.id}>
+                                    <h5 className="track-title">{track.title} by </h5>
+                                    <h5 className="track-artist">{track.artist}</h5>
+                                </div>
+                            ))} 
+                            
                         </div> 
                     </div>
                 :
-                    <div>
-
-                    </div>
-                    
+                    <div></div>
+                }
+                {((created === true) && (song1 !== null) && (song2 !== null)) ?
+                    <Link to="/">
+                        <button className="btn btn-success" onClick={() => exportPlaylist()}>Export to Spotify</button>
+                    </Link>
+                :
+                    <div></div>
                 }
                 
                 
