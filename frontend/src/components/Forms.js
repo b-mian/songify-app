@@ -42,7 +42,6 @@ const Forms = ({code}) => {
             setSong2(null);
             return setSearchResults1([]);
         }
-        setSong1(null);
         // testing search results
         console.log(searchResults1);
         spotifyAPI.searchTracks(search1).then(res => {
@@ -73,7 +72,6 @@ const Forms = ({code}) => {
             setSong2(null);
             return setSearchResults2([]);
         }
-        setSong2(null);
         spotifyAPI.searchTracks(search2).then(res => {
             setSearchResults2(res.body.tracks.items.map(track => {
                 // return the smallest album image by cycling through all images
