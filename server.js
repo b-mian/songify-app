@@ -21,6 +21,10 @@ let client_secret = process.env.client_secret;
 // Where to re-direct after login
 let redirect_uri = process.env.redirect_uri; 
 
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("frontend/build"));
+}
+
 app.post('/refresh', (req, res) => {
   const refreshToken = req.body.refreshToken;
   let credentials = {
@@ -74,6 +78,3 @@ app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 })
 
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("frontend/build"));
-}
