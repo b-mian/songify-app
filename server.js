@@ -75,6 +75,6 @@ app.post('/login', (req, res) => {
 
 // port on which app is running locally
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
+  console.log(`Example app listening at https://songify-music.herokuapp.com/`);
 })
 
