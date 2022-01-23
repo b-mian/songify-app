@@ -9,7 +9,7 @@ export default function useAuth(code) {
 
     useEffect(() => {
         axios
-        .post('http://localhost:3001/login', {
+        .post('http://localhost:3000/login', {
             code
         })
         .then(res => {
@@ -29,7 +29,7 @@ export default function useAuth(code) {
             return;
         }
         axios
-        .post('http://localhost:3001/refresh', {
+        .post('http://localhost:3000/refresh', {
             refreshToken,
         })
         .then(res => {

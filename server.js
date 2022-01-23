@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json());
 // port number
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 3000;
 
 // Your Spotify developer client id
 let client_id = process.env.client_id; 
@@ -75,6 +75,6 @@ app.post('/login', (req, res) => {
 
 // port on which app is running locally
 app.listen(port, () => {
-  console.log(`Example app listening at https://songify-music.herokuapp.com/`);
+  console.log(`Example app listening at port ${port}`);
 })
 
