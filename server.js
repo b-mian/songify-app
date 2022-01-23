@@ -25,7 +25,7 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("frontend/build"));
 }
 
-app.post('/refresh', (req, res) => {
+app.post('https://songify-music.herokuapp.com/refresh', (req, res) => {
   const refreshToken = req.body.refreshToken;
   let credentials = {
     clientId: client_id,
@@ -47,7 +47,7 @@ app.post('/refresh', (req, res) => {
 
 })
 
-app.post('/login', (req, res) => {
+app.post('https://songify-music.herokuapp.com/login', (req, res) => {
   const code = req.body.code;
   console.log(code);
   let credentials = {
@@ -74,7 +74,7 @@ app.post('/login', (req, res) => {
 
 
 // port on which app is running locally
-app.listen(port, () => {
+app.listen('https://songify-music.herokuapp.com/', () => {
   console.log(`Example app listening at https://songify-music.herokuapp.com/`);
 })
 
