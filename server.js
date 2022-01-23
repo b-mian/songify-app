@@ -21,7 +21,7 @@ let client_secret = process.env.client_secret;
 // Where to re-direct after login
 let redirect_uri = process.env.redirect_uri; 
 
-app.post('/refresh', (req, res) => {
+app.post('https://songify-music.herokuapp.com/refresh', (req, res) => {
   const refreshToken = req.body.refreshToken;
   let credentials = {
     clientId: client_id,
@@ -43,7 +43,7 @@ app.post('/refresh', (req, res) => {
 
 })
 
-app.post('/login', (req, res) => {
+app.post('https://songify-music.herokuapp.com/login', (req, res) => {
   const code = req.body.code;
   console.log(code);
   let credentials = {
@@ -70,7 +70,7 @@ app.post('/login', (req, res) => {
 
 
 // port on which app is running locally
-app.listen(port, () => {
+app.listen('https://songify-music.herokuapp.com/', () => {
   console.log(`Example app listening at http://localhost:${port}`);
 })
 
