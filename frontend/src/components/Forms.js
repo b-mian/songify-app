@@ -3,7 +3,6 @@ import useAuth from './useAuth';
 import { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import SpotifyWebApi from 'spotify-web-api-node';
-import CreatePlaylist from './CreatePlaylist';
 import Dropdown from 'react-bootstrap/Dropdown';
 
 // create new instance of Spotify API with given client credentials
@@ -40,7 +39,7 @@ const Forms = ({code}) => {
             setCreated(false);
             setSong1(null);
             setSong2(null);
-            return setSearchResults1([]);
+            setSearchResults1([]);
         }
         // testing search results
         console.log(searchResults1);
@@ -70,7 +69,7 @@ const Forms = ({code}) => {
             setCreated(false);
             setSong1(null);
             setSong2(null);
-            return setSearchResults2([]);
+            setSearchResults2([]);
         }
         spotifyAPI.searchTracks(search2).then(res => {
             setSearchResults2(res.body.tracks.items.map(track => {
@@ -95,6 +94,7 @@ const Forms = ({code}) => {
     const handlePlaylist = () => {
         if (!song1 || !song2) {
             setCreated(false);
+            setPlaylist([]);
             return;
         }
         setCreated(true);
