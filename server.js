@@ -67,6 +67,10 @@ app.post('/login', (req, res) => {
   })
 })
 
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("frontend/build"));
+}
+
 // port on which app is running locally
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
