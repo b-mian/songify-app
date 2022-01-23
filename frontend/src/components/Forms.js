@@ -30,7 +30,7 @@ const Forms = ({code}) => {
             return;
         }
         spotifyAPI.setAccessToken(accessToken);
-    }, [accessToken])
+    }, [])
 
     // call to api based on search query; return album metadata into an array
     useEffect(() => {
