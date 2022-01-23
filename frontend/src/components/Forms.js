@@ -17,10 +17,10 @@ const Forms = ({code}) => {
 
     const [search1, setSearch1] = useState("");
     const [search2, setSearch2] = useState("");
-
-    const [song1, setSong1] = useState(false);
-    const [song2, setSong2] = useState(false);
-
+    const [playlist, setPlaylist] = useState([]);
+    const [song1, setSong1] = useState(null);
+    const [song2, setSong2] = useState(null);
+    const [songIsSet, setSongIsSet] = useState(false);
     const [searchResults1, setSearchResults1] = useState([]);
     const [searchResults2, setSearchResults2] = useState([]);
 
@@ -38,7 +38,7 @@ const Forms = ({code}) => {
         if (!search1) {
             return setSearchResults1([]);
         }
-        setSong1(false);
+        setSong1(null);
         // testing search results
         console.log(searchResults1);
         spotifyAPI.searchTracks(search1).then(res => {
@@ -50,7 +50,9 @@ const Forms = ({code}) => {
                 }, track.album.images[0])
                 return {
                     artist: track.artists[0].name,
+                    artistID: track.artists[0].id,
                     title: track.name,
+                    id: track.id,
                     url: track.uri,
                     albumUrl: smallestImage.url
                 }
@@ -63,7 +65,7 @@ const Forms = ({code}) => {
         if (!search2) {
             return setSearchResults2([]);
         }
-        setSong2(false);
+        setSong2(null);
         spotifyAPI.searchTracks(search2).then(res => {
             setSearchResults2(res.body.tracks.items.map(track => {
                 // return the smallest album image by cycling through all images
@@ -73,7 +75,9 @@ const Forms = ({code}) => {
                 }, track.album.images[0])
                 return {
                     artist: track.artists[0].name,
+                    artistID: track.artists[0].id,
                     title: track.name,
+                    id: track.id,
                     url: track.uri,
                     albumUrl: smallestImage.url
                 }
@@ -82,9 +86,52 @@ const Forms = ({code}) => {
 
     }, [search2, accessToken])
 
-    useEffect(() => {
+    const handlePlaylist = () => {
         
-    }, [song2, song1])
+        spotifyAPI.getRecommendations({
+            min_energy: 0.4,
+            seed_artists: [song1.artistID, song2.artistID],
+            seed_genres: [],
+            seed_tracks: [song1.id, song2.id],
+            min_popularity: 50
+        })
+        .then(res => {
+          let recommendations = res.body.tracks;
+          setPlaylist(recommendations.map(rec => {
+            
+            return {
+                artist: rec.artists[0].name,
+                artistID: rec.artists[0].id,
+                title: rec.name,
+                uri: rec.uri,
+                id: rec.id
+            }
+          }));
+          
+        })
+        .catch(err => {
+            console.log("Something went wrong!", err);
+        })
+    }
+
+    const createPlaylist = () => {
+        
+        spotifyAPI.createPlaylist('Songify Playlist', { 'description': 'My custom playlist from that cool Songify app', 'public': false })
+        .then(data => {
+            const playlistID = data.body.id;
+            let trackList = []
+            spotifyAPI.addTracksToPlaylist(playlistID, playlist.map(track => track.uri))
+            .then(res => {
+                console.log('Added tracks to playlist!');
+            })
+            .catch(err => {
+                console.log(err);
+            });
+        })
+        .catch(err => {
+            console.log(err);
+        });
+    }
     
 
     return (
@@ -103,7 +150,7 @@ const Forms = ({code}) => {
                     <label for="track1">Choose Track 1</label>
                     <input type="text" className="form-control mt-3" onChange={e => setSearch1(e.target.value)} id="track1" placeholder="Search Spotify"></input>
                 </div>
-                {song1 === false ?
+                {song1 === null ?
                     <div className="tracks-container" style={{display: search1 === "" ? "none" : "block"}}>
                         {searchResults1.map(tracks => (
                             <Dropdown.Item href="#" onClick={() => setSong1(tracks)}>
@@ -114,11 +161,11 @@ const Forms = ({code}) => {
                         ))}
                     </div>
                 :
-                    <div className="chosen-song" style={{display: (song1 !== false) ? "block" : "none"}}>
+                    <div className="chosen-song" style={{display: (song1 !== null) ? "block" : "none"}}>
                         <img src={song1.albumUrl} style={{height: "64px", width: "64px"}} alt="" />
                         <h5 className="track-title">{song1.title} by </h5>
                         <h5 className="track-artist">{song1.artist}</h5>
-                        <button className="cancel-song" onClick={() => setSong1(false)}>X</button>
+                        <button className="cancel-song" onClick={() => setSong1(null)}>X</button>
                     </div>
 
                 }
@@ -126,7 +173,7 @@ const Forms = ({code}) => {
                     <label for="track2">Choose Track 2</label>
                     <input type="text" className="form-control mt-3" id="track2" onChange={e => setSearch2(e.target.value)} placeholder="Search Spotify"></input>
                 </div>
-                {song2 === false ?
+                {song2 === null ?
                     <div className="tracks-container" style={{display: search2 === "" ? "none" : "block"}}>
                         {searchResults2.map(tracks => (
                             <Dropdown.Item href="#" onClick={() => setSong2(tracks)}>
@@ -137,24 +184,36 @@ const Forms = ({code}) => {
                         ))}
                     </div>
                 :
-                    <div className="chosen-song" style={{display: (song2 !== false) ? "block" : "none"}}>
+                    <div className="chosen-song" style={{display: (song2 !== null) ? "block" : "none"}}>
                         <img src={song2.albumUrl} style={{height: "64px", width: "64px"}} alt="" />
                         <h5 className="track-title">{song2.title} by </h5>
                         <h5 className="track-artist">{song2.artist}</h5>
-                        <button className="btn cancel-song" onClick={() => setSong2(false)}>X</button>
+                        <button className="btn cancel-song" onClick={() => setSong2(null)}>X</button>
                     </div>
 
                 }
-                {showPlaylist === false ?
-                    <Link to="/">
-                        <button type="submit" onClick={() => setShowPlaylist(!showPlaylist)} className="btn btn-success mt-3">Create Playlist</button>
-                    </Link>
+                
+                
+                <Link to="/">
+                    <button type="submit" onClick={() => handlePlaylist()} className="btn btn-success mt-3">Create Playlist</button>
+                </Link>
+                {((song1 !== null) && (song2 !== null) && (playlist !== [])) ?
+                    <div>
+                        <div className="playlist-container">
+                        {playlist.map(track => (
+                            <div key={track.id}>
+                                <h5 className="track-title">{track.title} by </h5>
+                                <h5 className="track-artist">{track.artist}</h5>
+                            </div>
+                        ))} 
+                            <Link to="/">
+                                <button className="btn btn-primary btn-lg" onClick={() => createPlaylist()}>Export to Spotify</button>
+                            </Link>
+                        </div> 
+                    </div>
                 :
-                    <div style={{display: showPlaylist === true ? "block" : "none"}}>
-                        <Link to="/">
-                            <button type="submit" onClick={() => setShowPlaylist(!showPlaylist)} className="btn btn-success mt-3">Create Playlist</button>
-                        </Link>
-                        <CreatePlaylist code={code} trackOne={song1} trackTwo={song2} /> 
+                    <div>
+
                     </div>
                     
                 }
