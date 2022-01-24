@@ -4,16 +4,13 @@ import { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import SpotifyWebApi from 'spotify-web-api-node';
 import Dropdown from 'react-bootstrap/Dropdown';
-
 // create new instance of Spotify API with given client credentials
 const spotifyAPI = new SpotifyWebApi({
     clientId: "4362dfe6f5c244dbbc69cff0883518c4", 
 });
-
 const Forms = ({code}) => {
     // used for post request to server with auth code
     const accessToken = useAuth(code);
-
     const [search1, setSearch1] = useState("");
     const [search2, setSearch2] = useState("");
     const [playlist, setPlaylist] = useState([]);
@@ -22,8 +19,6 @@ const Forms = ({code}) => {
     const [created, setCreated] = useState(false);
     const [searchResults1, setSearchResults1] = useState([]);
     const [searchResults2, setSearchResults2] = useState([]);
-
-    const [showPlaylist, setShowPlaylist] = useState(false);
     // perform a check on whether the access token is null; if not, set it
     
     useEffect(() => {
@@ -107,7 +102,6 @@ const Forms = ({code}) => {
         .then(res => {
           let recommendations = res.body.tracks;
           setPlaylist(recommendations.map(rec => {
-            
             return {
                 artist: rec.artists[0].name,
                 artistID: rec.artists[0].id,
