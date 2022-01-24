@@ -20,7 +20,7 @@ const Forms = ({code}) => {
     const [searchResults1, setSearchResults1] = useState([]);
     const [searchResults2, setSearchResults2] = useState([]);
     // perform a check on whether the access token is null; if not, set it
-    
+    spotifyAPI.setAccessToken(accessToken);
     useEffect(() => {
         if (!accessToken) {
             return;
