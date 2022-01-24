@@ -3,11 +3,11 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 
-export default function useAuth(code) {
+export default function useAuth() {
     const [accessToken, setAccessToken] = useState();
     const [refreshToken, setRefreshToken] = useState();
     const [expiresIn, setExpiresIn] = useState();
-    
+    const code = new URLSearchParams(window.location.search).get('code');
     useEffect(() => {
         axios
         .post(`${process.env.PORT}/login`, {

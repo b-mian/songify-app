@@ -12,8 +12,7 @@ const spotifyAPI = new SpotifyWebApi({
 
 const Forms = () => {
     // used for post request to server with auth code
-    const code = new URLSearchParams(window.location.search).get('code');
-    const accessToken = useAuth(code);
+    const accessToken = useAuth();
 
     const [search1, setSearch1] = useState("");
     const [search2, setSearch2] = useState("");
