@@ -1,6 +1,5 @@
 {
   "name": "server",
-  "homepage": "https://songify-music.herokuapp.com",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
