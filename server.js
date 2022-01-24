@@ -49,7 +49,7 @@ app.post(`${port}/refresh`, (req, res) => {
 
 app.post(`${port}/login`, (req, res) => {
   const code = req.body.code;
-  console.log(code);
+  console.log("Logging IN");
   let credentials = {
     clientId: client_id,
     clientSecret: client_secret,
