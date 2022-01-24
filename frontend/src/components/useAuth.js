@@ -20,6 +20,7 @@ export default function useAuth(code) {
             window.history.pushState({}, null, "/");
         })
         .catch(() => {
+            window.location = "/";
             console.log("Error");
         })
     }, [code])
@@ -38,6 +39,7 @@ export default function useAuth(code) {
             window.history.pushState({}, null, "/");
         })
         .catch(() => {
+            window.location = "/";
             return
         })
     }, [refreshToken, expiresIn])
