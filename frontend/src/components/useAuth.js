@@ -11,7 +11,7 @@ export default function useAuth() {
         console.log(code);
         console.log(process.env.PORT);
         axios
-        .post(`${process.env.PORT}/login`, {
+        .post(`http://localhost:3005/login`, {
             code
         })
         .then(res => {
@@ -31,7 +31,7 @@ export default function useAuth() {
             return;
         }
         axios
-        .post(`${process.env.PORT}/refresh`, {
+        .post(`http://localhost:3005/refresh`, {
             refreshToken,
         })
         .then(res => {
