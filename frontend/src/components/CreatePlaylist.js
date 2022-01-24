@@ -3,8 +3,6 @@ import useAuth from './useAuth';
 import { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 
-
-
 /* const spotifyAPI = new SpotifyWebApi({
     clientId: "4362dfe6f5c244dbbc69cff0883518c4", 
 }); */
