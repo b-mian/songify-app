@@ -4,9 +4,6 @@ import Dropdown from 'react-bootstrap/Dropdown';
 
 const Track = ({track}) => {
     
-    
-    
-
     return (
         <Dropdown.Item href="#">
             <img src={track.albumUrl} style={{height: "64px", width: "64px"}} alt="" />
