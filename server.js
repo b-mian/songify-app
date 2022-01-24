@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json());
 // port number
-const port = process.env.PORT || 'https://songify-music.herokuapp.com/';
+const port = process.env.PORT || 3001;
 
 // Your Spotify developer client id
 let client_id = process.env.client_id; 
@@ -25,7 +25,7 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("frontend/build"));
 }
 
-app.post(`https://songify-music.herokuapp.com/refresh`, (req, res) => {
+app.post('/refresh', (req, res) => {
   const refreshToken = req.body.refreshToken;
   let credentials = {
     clientId: client_id,
@@ -47,7 +47,7 @@ app.post(`https://songify-music.herokuapp.com/refresh`, (req, res) => {
 
 })
 
-app.post(`https://songify-music.herokuapp.com/login`, (req, res) => {
+app.post('/login', (req, res) => {
   const code = req.body.code;
   console.log("Logging IN");
   let credentials = {
