@@ -10,9 +10,9 @@ const spotifyAPI = new SpotifyWebApi({
     clientId: "4362dfe6f5c244dbbc69cff0883518c4", 
 });
 
-const Forms = () => {
+const Forms = ({code}) => {
     // used for post request to server with auth code
-    const accessToken = useAuth();
+    const accessToken = useAuth(code);
 
     const [search1, setSearch1] = useState("");
     const [search2, setSearch2] = useState("");
