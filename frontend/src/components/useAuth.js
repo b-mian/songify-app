@@ -10,7 +10,7 @@ export default function useAuth() {
     const code = new URLSearchParams(window.location.search).get('code');
     useEffect(() => {
         axios
-        .post(`${process.env.PORT}/login`, {
+        .post(`https://songify-music.herokuapp.com/login`, {
             code
         })
         .then(res => {
@@ -30,7 +30,7 @@ export default function useAuth() {
             return;
         }
         axios
-        .post(`${process.env.PORT}/refresh`, {
+        .post(`https://songify-music.herokuapp.com/refresh`, {
             refreshToken,
         })
         .then(res => {
