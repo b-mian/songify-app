@@ -10,7 +10,8 @@ function App() {
   return (
     <Router>
         <Routes>
-          <Route path="/" element={code ? <Forms code={code} /> : <LandingPage />}></Route>
+          <Route path="/" element={<LandingPage />}></Route>
+          <Route path={`/?code=${code}`} element={<Forms code={code} />}></Route>
         </Routes>
     </Router>
   );

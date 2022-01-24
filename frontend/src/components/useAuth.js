@@ -9,7 +9,6 @@ export default function useAuth() {
     const code = new URLSearchParams(window.location.search).get('code');
     useEffect(() => {
         console.log(code);
-        console.log(process.env.PORT);
         axios
         .post('https://songify-music.herokuapp.com/login', {
             code
