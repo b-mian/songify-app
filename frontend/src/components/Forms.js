@@ -34,7 +34,6 @@ const Forms = ({code}) => {
             setPlaylist([]);
             setCreated(false);
             setSong1(null);
-            setSong2(null);
         }
         // testing search results
         console.log(searchResults1);
@@ -62,7 +61,6 @@ const Forms = ({code}) => {
         if (!search2) {
             setPlaylist([]);
             setCreated(false);
-            setSong1(null);
             setSong2(null);
         }
         spotifyAPI.searchTracks(search2).then(res => {
