@@ -8,6 +8,8 @@ export default function useAuth() {
     const [expiresIn, setExpiresIn] = useState();
     const code = new URLSearchParams(window.location.search).get('code');
     useEffect(() => {
+        console.log(code);
+        console.log(process.env.PORT);
         axios
         .post(`${process.env.PORT}/login`, {
             code
