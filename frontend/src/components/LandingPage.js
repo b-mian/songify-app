@@ -10,11 +10,9 @@ const LandingPage = () => {
                 <h3 className="landing-subheading">Custom playlists based on two songs of your choice</h3>
                 <img className="headphone" style={{height: "360px", width: "360px"}} src={headphone} alt="headphone" />
             </div>
-            
             <div className="mt-4 login-component">
                 <Login />
             </div>
-            
         </div>
     )
 }

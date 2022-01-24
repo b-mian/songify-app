@@ -38,7 +38,7 @@ export default function useAuth(code) {
             window.history.pushState({}, null, "/");
         })
         .catch(() => {
-            return
+            return;
         })
     }, [refreshToken, expiresIn])
 
