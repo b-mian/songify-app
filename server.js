@@ -25,7 +25,7 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("frontend/build"));
 }
 
-app.post(`${process.env.PORT}/refresh`, (req, res) => {
+app.post(`${port}/refresh`, (req, res) => {
   const refreshToken = req.body.refreshToken;
   let credentials = {
     clientId: client_id,
@@ -47,7 +47,7 @@ app.post(`${process.env.PORT}/refresh`, (req, res) => {
 
 })
 
-app.post(`${process.env.PORT}/login`, (req, res) => {
+app.post(`${port}/login`, (req, res) => {
   const code = req.body.code;
   console.log(code);
   let credentials = {
@@ -74,7 +74,7 @@ app.post(`${process.env.PORT}/login`, (req, res) => {
 
 
 // port on which app is running locally
-app.listen(process.env.PORT, () => {
+app.listen(port, () => {
   console.log(`Example app listening at port ${port}`);
 })
 

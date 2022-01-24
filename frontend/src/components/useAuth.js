@@ -11,7 +11,7 @@ export default function useAuth() {
         console.log(code);
         console.log(process.env.PORT);
         axios
-        .post(`http://localhost:3005/login`, {
+        .post('https://songify-music.herokuapp.com/login', {
             code
         })
         .then(res => {
@@ -31,7 +31,7 @@ export default function useAuth() {
             return;
         }
         axios
-        .post(`http://localhost:3005/refresh`, {
+        .post('https://songify-music.herokuapp.com/refresh', {
             refreshToken,
         })
         .then(res => {
