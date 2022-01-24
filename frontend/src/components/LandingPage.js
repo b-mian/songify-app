@@ -2,7 +2,7 @@ import React from 'react';
 import Login from './Login';
 import headphone from './headphone.png';
 
-const LandingPage = ({ code }) => {
+const LandingPage = () => {
     return (
         <div className="landing-container">
             <div className="title-pic">
