@@ -3,9 +3,9 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 export default function useAuth(code) {
-    const [accessToken, setAccessToken] = useState();
-    const [refreshToken, setRefreshToken] = useState();
-    const [expiresIn, setExpiresIn] = useState();
+    const [accessToken, setAccessToken] = useState("");
+    const [refreshToken, setRefreshToken] = useState("");
+    const [expiresIn, setExpiresIn] = useState(0);
     
     useEffect(() => {
         console.log(code);
@@ -14,7 +14,6 @@ export default function useAuth(code) {
             code
         })
         .then(res => {
-            console.log(res.data);
             setAccessToken(res.data.accessToken);
             setRefreshToken(res.data.refreshToken);
             setExpiresIn(res.data.expiresIn);
