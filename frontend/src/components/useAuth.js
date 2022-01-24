@@ -10,7 +10,7 @@ export default function useAuth() {
     useEffect(() => {
         console.log(code);
         axios
-        .post('https://songify-music.herokuapp.com/', {
+        .post('https://songify-music.herokuapp.com/login', {
             code
         })
         .then(res => {

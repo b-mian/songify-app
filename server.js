@@ -47,7 +47,7 @@ app.post(`${port}/refresh`, (req, res) => {
 
 })
 
-app.post(`${port}/`, (req, res) => {
+app.post(`${port}/login`, (req, res) => {
   const code = req.body.code;
   console.log("Logging IN");
   let credentials = {
