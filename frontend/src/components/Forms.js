@@ -11,6 +11,7 @@ const spotifyAPI = new SpotifyWebApi({
 const Forms = ({code}) => {
     // used for post request to server with auth code
     const accessToken = useAuth(code);
+    spotifyAPI.setAccessToken(accessToken);
     const [search1, setSearch1] = useState("");
     const [search2, setSearch2] = useState("");
     const [playlist, setPlaylist] = useState([]);
@@ -20,7 +21,7 @@ const Forms = ({code}) => {
     const [searchResults1, setSearchResults1] = useState([]);
     const [searchResults2, setSearchResults2] = useState([]);
     // perform a check on whether the access token is null; if not, set it
-    spotifyAPI.setAccessToken(accessToken);
+    
     useEffect(() => {
         if (!accessToken) {
             return;
