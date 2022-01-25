@@ -1,5 +1,4 @@
 // requiring these modules
-require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
@@ -12,7 +11,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json());
 // port number
-const port = process.env.PORT || 'http://songify-music.com';
+const port = process.env.PORT || 4000;
 
 // Your Spotify developer client id
 let client_id = process.env.client_id; 
@@ -76,6 +75,6 @@ app.post('/login', (req, res) => {
 
 // port on which app is running locally
 app.listen(port, () => {
-  console.log(`Example app listening at port 5000`);
+  console.log(`Example app listening at port ${port}`);
 });
 
