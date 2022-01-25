@@ -8,10 +8,11 @@ import Dropdown from 'react-bootstrap/Dropdown';
 const spotifyAPI = new SpotifyWebApi({
     clientId: "4362dfe6f5c244dbbc69cff0883518c4", 
 });
+
 const Forms = ({code}) => {
     // used for post request to server with auth code
     const accessToken = useAuth(code);
-    spotifyAPI.setAccessToken(accessToken);
+    
     const [search1, setSearch1] = useState("");
     const [search2, setSearch2] = useState("");
     const [playlist, setPlaylist] = useState([]);
@@ -56,7 +57,7 @@ const Forms = ({code}) => {
             })
         )});
 
-    }, [search1, accessToken])
+    }, [search1])
     // call to api based on second search query; return album metadata into an array
     useEffect(() => {
         if (!search2) {
@@ -82,7 +83,7 @@ const Forms = ({code}) => {
             })
         )});
 
-    }, [search2, accessToken])
+    }, [search2])
 
     const handlePlaylist = () => {
         if (!song1 || !song2) {
