@@ -72,7 +72,7 @@ app.post('/login', (req, res) => {
 })
 
 // port on which app is running locally
-https.createServer(app).listen(5000, () => {
-  console.log(`Example app listening at port ${5000}`);
+app.listen(port, () => {
+  console.log(`Example app listening at port ${port}`);
 });
 
