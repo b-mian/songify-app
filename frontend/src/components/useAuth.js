@@ -8,7 +8,7 @@ export default function useAuth(code) {
     const [expiresIn, setExpiresIn] = useState();
     useEffect(() => {
         axios
-        .post('http://localhost:5000/login', {
+        .post('/login', {
             code
         })
         .then(res => {
@@ -28,7 +28,7 @@ export default function useAuth(code) {
             return;
         }
         axios
-        .post('http://localhost:5000/refresh', {
+        .post('/refresh', {
             refreshToken,
         })
         .then(res => {
