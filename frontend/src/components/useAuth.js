@@ -17,7 +17,6 @@ export default function useAuth(code) {
             setRefreshToken(res.data.refreshToken);
             setExpiresIn(res.data.expiresIn);
             window.history.pushState({}, null, "/");
-            window.location = `https://songify-music.herokuapp.com/?code=${code}`;
         })
         .catch(err => {
             console.log(err);
@@ -36,7 +35,6 @@ export default function useAuth(code) {
             setAccessToken(res.data.accessToken);
             setExpiresIn(res.data.expiresIn);
             window.history.pushState({}, null, "/");
-            window.location = `https://songify-music.herokuapp.com/?code=${code}`;
         })
         .catch(() => {
             return;
