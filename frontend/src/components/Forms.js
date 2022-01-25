@@ -57,7 +57,7 @@ const Forms = ({code}) => {
             })
         )});
 
-    }, [search1])
+    }, [search1, accessToken])
     // call to api based on second search query; return album metadata into an array
     useEffect(() => {
         if (!search2) {
@@ -83,7 +83,7 @@ const Forms = ({code}) => {
             })
         )});
 
-    }, [search2])
+    }, [search2, accessToken])
 
     const handlePlaylist = () => {
         if (!song1 || !song2) {
