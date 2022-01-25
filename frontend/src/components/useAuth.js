@@ -8,7 +8,7 @@ export default function useAuth(code) {
     const [expiresIn, setExpiresIn] = useState();
     useEffect(() => {
         axios
-        .post('http://localhost:4000/login', {
+        .post('http://songify-music.com/login', {
             code
         })
         .then(res => {
@@ -28,7 +28,7 @@ export default function useAuth(code) {
             return;
         }
         axios
-        .post('http://localhost:4000/refresh', {
+        .post('http://songify-music.com/refresh', {
             refreshToken,
         })
         .then(res => {
