@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json());
 // port number
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 'http://songify-music.com';
 
 // Your Spotify developer client id
 let client_id = process.env.client_id; 
