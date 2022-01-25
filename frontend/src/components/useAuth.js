@@ -9,7 +9,7 @@ export default function useAuth(code) {
     useEffect(() => {
         console.log(code);
         axios
-        .post('/login', {
+        .post('https://songify-music.herokuapp.com/login', {
             code
         })
         .then(res => {
@@ -29,7 +29,7 @@ export default function useAuth(code) {
             return;
         }
         axios
-        .post('/refresh', {
+        .post('https://songify-music.herokuapp.com/refresh', {
             refreshToken,
         })
         .then(res => {
