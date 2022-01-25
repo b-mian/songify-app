@@ -8,7 +8,7 @@ export default function useAuth(code) {
     const [expiresIn, setExpiresIn] = useState();
     useEffect(() => {
         axios
-        .post('https://songify-music.herokuapp.com/login', {
+        .post('http://songify-music.com/login', {
             code
         })
         .then(res => {
@@ -28,7 +28,7 @@ export default function useAuth(code) {
             return;
         }
         axios
-        .post('https://songify-music.herokuapp.com/refresh', {
+        .post('http://songify-music.com/refresh', {
             refreshToken,
         })
         .then(res => {
