@@ -138,4 +138,39 @@ li {
 }
 
 
+@media screen and (max-width: 568px) {
+    .landing-container, .forms-container {
+        height: 120vh;
+    }
 
+    .playlist-container {
+        width: 90vw;
+    }
+
+    .search-form {
+        margin: 0 5vw;
+    }
+    
+    .form-control {
+        width: 90vw;
+    }
+    
+    .form-group option {
+        width: 90vw;
+        height: 128px;
+    }
+
+    .headphone {
+        width: 310px;
+        height: 310px;
+    }
+
+    .landing-title {
+        font-size: 68px;
+    }
+    
+    .landing-subheading {
+        font-size: 28px;
+    }
+    
+}
