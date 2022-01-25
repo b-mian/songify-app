@@ -7,7 +7,6 @@ export default function useAuth(code) {
     const [refreshToken, setRefreshToken] = useState();
     const [expiresIn, setExpiresIn] = useState();
     useEffect(() => {
-        console.log(code);
         axios
         .post('https://songify-music.herokuapp.com/login', {
             code
