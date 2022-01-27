@@ -4,7 +4,7 @@ html, body {
 
 .landing-container, .forms-container {
     background: linear-gradient(rgb(116, 190, 116), rgb(117, 167, 117), rgb(82, 122, 82));
-    min-height: 100vh;
+    min-height: 100%;
     width: 100vw;
 }
 
@@ -140,19 +140,21 @@ li {
 
 @media screen and (max-width: 568px) {
     .landing-container, .forms-container {
-        height: 120vh;
+        height: auto;
     }
 
     .playlist-container {
-        width: 90vw;
+        width: 94vw;
     }
 
     .search-form {
-        margin: 0 5vw;
+        margin: 0 3vw;
     }
     
     .form-control {
-        width: 90vw;
+        width: 94vw;
+        margin-right: 3vw;
+        margin-left: 3vw;
     }
     
     .form-group option {
@@ -166,11 +168,21 @@ li {
     }
 
     .landing-title {
-        font-size: 68px;
+        font-size: 69px;
     }
     
     .landing-subheading {
-        font-size: 28px;
+        font-size: 26px;
+    }
+
+    .chosen-song {
+        width: 95vw;
+        margin-right: 2.5vw;
+        margin-left: 2.5vw;
+    }
+
+    .login-btn-container {
+        margin-bottom: 20px;
     }
     
 }
