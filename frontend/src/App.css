@@ -1,10 +1,11 @@
 html, body {
     width: 100vw !important;
+    min-height: 100vh;
 }
 
 .landing-container, .forms-container {
     background: linear-gradient(rgb(116, 190, 116), rgb(117, 167, 117), rgb(82, 122, 82));
-    min-height: 100%;
+    min-height: 100vh;
     width: 100vw;
 }
 
@@ -137,10 +138,16 @@ li {
     border: 1px solid rgb(22, 78, 22);
 }
 
+.export-btn {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
 
 @media screen and (max-width: 568px) {
     .landing-container, .forms-container {
-        height: auto;
+        min-height: 120vh;
+        max-height: 320vh;
     }
 
     .playlist-container {
@@ -168,7 +175,7 @@ li {
     }
 
     .landing-title {
-        font-size: 69px;
+        font-size: 64px;
     }
     
     .landing-subheading {
@@ -182,7 +189,7 @@ li {
     }
 
     .login-btn-container {
-        margin-bottom: 20px;
+        margin-bottom: 30px;
     }
     
 }

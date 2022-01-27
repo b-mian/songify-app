@@ -214,7 +214,7 @@ const Forms = ({code}) => {
                 }
                 {((created === true) && (song1 !== null) && (song2 !== null)) ?
                     <Link to="/">
-                        <button className="btn btn-success" onClick={() => exportPlaylist()}>Export to Spotify</button>
+                        <button className="export-btn btn btn-success" onClick={() => exportPlaylist()}>Export to Spotify</button>
                     </Link>
                 :
                     <div></div>
