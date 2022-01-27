@@ -93,11 +93,11 @@ const Forms = ({code}) => {
         }
         setCreated(true);
         spotifyAPI.getRecommendations({
-            min_energy: 0.4,
+            min_energy: 0.5,
             seed_artists: [song1.artistID, song2.artistID],
             seed_genres: [],
             seed_tracks: [song1.id, song2.id],
-            min_popularity: 50
+            min_popularity: 60
         })
         .then(res => {
           let recommendations = res.body.tracks;

@@ -193,3 +193,14 @@ li {
     }
     
 }
+
+@media screen and (max-width: 376px) {
+    .headphone {
+        width: 280px;
+        height: 280px;
+    }
+
+    .landing-title {
+        font-size: 52px;
+    }
+}
