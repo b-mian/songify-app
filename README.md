@@ -1,6 +1,6 @@
 # songify-app
 
-LINK TO APP: http://www.playfulmusic-app.com
+LINK TO APP: https://www.playfulmusic-app.com
 
  Create custom playlists based on two songs selected by you, the user!
  
