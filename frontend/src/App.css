@@ -4,7 +4,7 @@ html, body {
 }
 
 .landing-container, .forms-container {
-    background: linear-gradient(rgb(116, 190, 116), rgb(117, 167, 117), rgb(82, 122, 82));
+    background: linear-gradient(rgb(14, 57, 114), rgb(41, 92, 151),rgb(72, 133, 202));
     min-height: 100vh;
     width: 100vw;
 }
@@ -45,13 +45,14 @@ html, body {
 
 .landing-title {
     font-size: 96px;
-    color: rgb(90, 146, 90);
+    color: rgb(48, 116, 48);
     text-align: center;
     padding-top: 100px;
 }
 
 .landing-subheading {
     text-align: center;
+    color: rgb(48, 116, 48);
 }
 
 li {
@@ -77,8 +78,8 @@ li {
 }
 
 .btn-success {
-    background-color:rgb(90, 146, 90);
-    border: 3px solid rgb(67, 102, 67);
+    background-color:rgb(48, 116, 48);
+    border: 3px solid whitesmoke;
     z-index: 100;
 }
 

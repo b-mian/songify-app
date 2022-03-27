@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import SpotifyWebApi from 'spotify-web-api-node';
 import Dropdown from 'react-bootstrap/Dropdown';
+import logo from './logo.png';
 // create new instance of Spotify API with given client credentials
 const spotifyAPI = new SpotifyWebApi({
     clientId: "4362dfe6f5c244dbbc69cff0883518c4", 
@@ -143,8 +144,9 @@ const Forms = ({code}) => {
 
     return (
         <div className="forms-container">
-            <h1 className="landing-title">Songify</h1>
+            <h1 className="landing-title">Playful</h1>
             <h3 className="landing-subheading">Custom playlists based on two songs of your choice</h3>
+            <h4 className="landing-subheading">View track metadata of your new playlist</h4>
             <form className="search-form">
                 <div className="form-group mt-4">
                     <label for="track1">Choose Track 1</label>
@@ -155,6 +157,7 @@ const Forms = ({code}) => {
                         {searchResults1.map(tracks => (
                             <Dropdown.Item href="#" onClick={() => setSong1(tracks)}>
                                 <img src={tracks.albumUrl} style={{height: "64px", width: "64px"}} alt="" />
+                                <img src={logo} style={{height: "18px", width: "18px"}} alt="" />
                                 <h5 className="track-title">{tracks.title} by </h5>
                                 <h5 className="track-artist">{tracks.artist}</h5>
                             </Dropdown.Item> 
@@ -178,6 +181,7 @@ const Forms = ({code}) => {
                         {searchResults2.map(tracks => (
                             <Dropdown.Item href="#" onClick={() => setSong2(tracks)}>
                                 <img src={tracks.albumUrl} style={{height: "64px", width: "64px"}} alt="" />
+                                <img src={logo} style={{height: "18px", width: "18px"}} alt="" />
                                 <h5 className="track-title">{tracks.title} by </h5>
                                 <h5 className="track-artist">{tracks.artist}</h5>
                             </Dropdown.Item> 
@@ -186,6 +190,7 @@ const Forms = ({code}) => {
                 :
                     <div className="chosen-song" style={{display: (song2 !== null) ? "block" : "none"}}>
                         <img src={song2.albumUrl} style={{height: "64px", width: "64px"}} alt="" />
+                        <img src={logo} style={{height: "18px", width: "18px"}} alt="" />
                         <h5 className="track-title">{song2.title} by </h5>
                         <h5 className="track-artist">{song2.artist}</h5>
                         <button className="btn cancel-song" onClick={() => setSong2(null)}>X</button>
