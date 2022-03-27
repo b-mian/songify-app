@@ -8,7 +8,7 @@ export default function useAuth(code) {
     const [expiresIn, setExpiresIn] = useState();
     useEffect(() => {
         axios
-        .post('http://www.playful-music.com/login', {
+        .post('http://www.playfulmusic.com/login', {
             code
         })
         .then(res => {
@@ -28,7 +28,7 @@ export default function useAuth(code) {
             return;
         }
         axios
-        .post('http://www.playful-music.com/refresh', {
+        .post('http://www.playfulmusic.com/refresh', {
             refreshToken,
         })
         .then(res => {
