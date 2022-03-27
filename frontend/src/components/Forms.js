@@ -157,7 +157,7 @@ const Forms = ({code}) => {
                         {searchResults1.map(tracks => (
                             <Dropdown.Item href="#" onClick={() => setSong1(tracks)}>
                                 <img src={tracks.albumUrl} style={{height: "64px", width: "64px"}} alt="" />
-                                <img src={logo} style={{height: "18px", width: "18px"}} alt="" />
+                                <img src={logo} style={{height: "30px", width: "30px"}} alt="" />
                                 <h5 className="track-title">{tracks.title} by </h5>
                                 <h5 className="track-artist">{tracks.artist}</h5>
                             </Dropdown.Item> 
@@ -181,7 +181,7 @@ const Forms = ({code}) => {
                         {searchResults2.map(tracks => (
                             <Dropdown.Item href="#" onClick={() => setSong2(tracks)}>
                                 <img src={tracks.albumUrl} style={{height: "64px", width: "64px"}} alt="" />
-                                <img src={logo} style={{height: "18px", width: "18px"}} alt="" />
+                                <img src={logo} style={{height: "30px", width: "30px"}} alt="" />
                                 <h5 className="track-title">{tracks.title} by </h5>
                                 <h5 className="track-artist">{tracks.artist}</h5>
                             </Dropdown.Item> 
@@ -190,7 +190,7 @@ const Forms = ({code}) => {
                 :
                     <div className="chosen-song" style={{display: (song2 !== null) ? "block" : "none"}}>
                         <img src={song2.albumUrl} style={{height: "64px", width: "64px"}} alt="" />
-                        <img src={logo} style={{height: "18px", width: "18px"}} alt="" />
+                        <img src={logo} style={{height: "30px", width: "30px"}} alt="" />
                         <h5 className="track-title">{song2.title} by </h5>
                         <h5 className="track-artist">{song2.artist}</h5>
                         <button className="btn cancel-song" onClick={() => setSong2(null)}>X</button>
