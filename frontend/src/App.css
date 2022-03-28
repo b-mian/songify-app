@@ -146,7 +146,7 @@ li {
 
 .logo-link, .logo-link img {
     display: inline-block !important;
-    margin-left: -10px !important;
+    margin-left: -15px !important;
     margin-bottom: -25px !important;
     z-index: 10;
 }
