@@ -74,7 +74,7 @@ app.post('/login', (req, res) => {
 })
 
 // port on which app is running locally
-app.listen(port, () => {
+app.listen(process.env.PORT || 4000, () => {
   console.log(`Example app listening at port ${port}`);
 });
 
