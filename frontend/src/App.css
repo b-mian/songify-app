@@ -146,14 +146,18 @@ li {
 
 .logo-link, .logo-link img {
     display: inline-block !important;
-    margin-left: -20px !important;
-    margin-bottom: -20px !important;
+    margin-left: -10px !important;
+    margin-bottom: -25px !important;
+    z-index: 10;
+}
+
+.track-title {
+    margin-left: 30px !important;
     z-index: 10;
 }
 
 .track-title, .track-artist {
-    margin-left: 30px !important;
-    z-index: 10;
+    color: rgb(102, 175, 102);
 }
 
 
