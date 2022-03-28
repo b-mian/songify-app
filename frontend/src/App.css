@@ -146,7 +146,13 @@ li {
 
 .logo-link, .logo-link img {
     display: inline-block !important;
-    margin-left: -30px !important;
+    margin-left: -20px !important;
+    margin-bottom: -20px !important;
+    z-index: 10;
+}
+
+.track-title, .track-artist {
+    margin-left: 30px !important;
     z-index: 10;
 }
 
