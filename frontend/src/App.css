@@ -144,6 +144,12 @@ li {
     margin-bottom: 30px !important;
 }
 
+.logo-link, .logo-link img {
+    display: inline;
+    margin-left: -40px;
+    z-index: 10;
+}
+
 
 @media screen and (max-width: 568px) {
     .landing-container, .forms-container {
@@ -156,7 +162,7 @@ li {
     }
 
     .search-form {
-        margin: 0 3vw;
+        margin: 0 2vw !important;
     }
     
     .form-control {

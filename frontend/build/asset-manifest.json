@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/static/css/main.4f5a84e3.chunk.css",
-    "main.js": "/static/js/main.b0a2360d.chunk.js",
-    "main.js.map": "/static/js/main.b0a2360d.chunk.js.map",
+    "main.css": "/static/css/main.7e1feea5.chunk.css",
+    "main.js": "/static/js/main.07ee61e8.chunk.js",
+    "main.js.map": "/static/js/main.07ee61e8.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.f5cfbed7.js",
     "runtime-main.js.map": "/static/js/runtime-main.f5cfbed7.js.map",
     "static/css/2.383c0125.chunk.css": "/static/css/2.383c0125.chunk.css",
@@ -10,16 +10,16 @@
     "static/js/2.2bdd9040.chunk.js.map": "/static/js/2.2bdd9040.chunk.js.map",
     "index.html": "/index.html",
     "static/css/2.383c0125.chunk.css.map": "/static/css/2.383c0125.chunk.css.map",
-    "static/css/main.4f5a84e3.chunk.css.map": "/static/css/main.4f5a84e3.chunk.css.map",
+    "static/css/main.7e1feea5.chunk.css.map": "/static/css/main.7e1feea5.chunk.css.map",
     "static/js/2.2bdd9040.chunk.js.LICENSE.txt": "/static/js/2.2bdd9040.chunk.js.LICENSE.txt",
     "static/media/headphone.fab80bce.png": "/static/media/headphone.fab80bce.png",
-    "static/media/logo.77b9fd8b.png": "/static/media/logo.77b9fd8b.png"
+    "static/media/spotify.77b9fd8b.png": "/static/media/spotify.77b9fd8b.png"
   },
   "entrypoints": [
     "static/js/runtime-main.f5cfbed7.js",
     "static/css/2.383c0125.chunk.css",
     "static/js/2.2bdd9040.chunk.js",
-    "static/css/main.4f5a84e3.chunk.css",
-    "static/js/main.b0a2360d.chunk.js"
+    "static/css/main.7e1feea5.chunk.css",
+    "static/js/main.07ee61e8.chunk.js"
   ]
 }
