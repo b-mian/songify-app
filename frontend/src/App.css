@@ -1,6 +1,6 @@
 html, body {
     width: 100vw !important;
-    min-height: 100vh;
+    min-height: 100%;
 }
 
 .landing-container, .forms-container {
@@ -39,20 +39,18 @@ html, body {
     height: 70px;
 }
 
-/* .homepage-row {
-    display: block !important;
-} */
-
 .landing-title {
     font-size: 96px;
-    color: rgb(48, 116, 48);
+    color: rgb(140, 220, 140);
     text-align: center;
     padding-top: 100px;
+    font-family: 'Quicksand', sans-serif;
 }
 
 .landing-subheading {
     text-align: center;
-    color: rgb(48, 116, 48);
+    color: rgb(140, 220, 140);
+    font-family: 'Quicksand', sans-serif;
 }
 
 li {
@@ -74,13 +72,16 @@ li {
 
 .login-btn-container {
     width: 100vw;
+    height: 75px;
     text-align: center;
+    padding-bottom: 100px;
 }
 
 .btn-success {
     background-color:rgb(48, 116, 48);
     border: 3px solid whitesmoke;
     z-index: 100;
+    font-family: 'Quicksand', sans-serif;
 }
 
 .btn-success:hover {
@@ -110,6 +111,7 @@ li {
 
 .track-artist, .track-title {
     display: inline-block;
+    font-family: 'Quicksand', sans-serif;
 }
 
 .track-title {
@@ -121,6 +123,7 @@ li {
     margin-top: 25px;
     border: 5px solid rgb(102, 175, 102);
     border-radius: 6px;
+    font-family: 'Quicksand', sans-serif;
 }
 
 .cancel-song {
@@ -137,11 +140,15 @@ li {
 
 .playlist-container div {
     border: 1px solid rgb(102, 175, 102);
+    margin-bottom: 10px;
+    margin-top: 10px;
+    font-family: 'Quicksand', sans-serif;
 }
 
 .export-btn {
     margin-top: 30px !important;
     margin-bottom: 30px !important;
+    font-family: 'Quicksand', sans-serif;
 }
 
 .logo-link, .logo-link img {
@@ -193,10 +200,6 @@ li {
 
     .landing-title {
         font-size: 64px;
-    }
-    
-    .landing-subheading {
-        font-size: 26px;
     }
 
     .chosen-song {

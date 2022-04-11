@@ -125,12 +125,12 @@ const Forms = ({code}) => {
             return;
         }
         let playlistName = prompt("Give your playlist a name...");
-        spotifyAPI.createPlaylist(playlistName, { 'description': 'My custom playlist from that cool Songify app', 'public': false })
+        spotifyAPI.createPlaylist(playlistName, { 'description': 'My custom playlist from that cool Playful app', 'public': false })
         .then(data => {
             const playlistID = data.body.id;
             spotifyAPI.addTracksToPlaylist(playlistID, playlist.map(track => track.uri))
             .then(res => {
-                console.log('Added tracks to playlist!');
+                alert('Added tracks to playlist!');
             })
             .catch(err => {
                 console.log(err);
