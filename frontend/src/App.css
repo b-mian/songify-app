@@ -170,8 +170,7 @@ li {
 
 @media screen and (max-width: 568px) {
     .landing-container, .forms-container {
-        min-height: 120vh;
-        max-height: 320vh;
+        min-height: 100vh;
     }
 
     .playlist-container {

@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/static/css/main.86086752.chunk.css",
+    "main.css": "/static/css/main.b83bdc7f.chunk.css",
     "main.js": "/static/js/main.a29bcfdf.chunk.js",
     "main.js.map": "/static/js/main.a29bcfdf.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.f5cfbed7.js",
@@ -10,7 +10,7 @@
     "static/js/2.2bdd9040.chunk.js.map": "/static/js/2.2bdd9040.chunk.js.map",
     "index.html": "/index.html",
     "static/css/2.383c0125.chunk.css.map": "/static/css/2.383c0125.chunk.css.map",
-    "static/css/main.86086752.chunk.css.map": "/static/css/main.86086752.chunk.css.map",
+    "static/css/main.b83bdc7f.chunk.css.map": "/static/css/main.b83bdc7f.chunk.css.map",
     "static/js/2.2bdd9040.chunk.js.LICENSE.txt": "/static/js/2.2bdd9040.chunk.js.LICENSE.txt",
     "static/media/headphone.fab80bce.png": "/static/media/headphone.fab80bce.png",
     "static/media/spotify.77b9fd8b.png": "/static/media/spotify.77b9fd8b.png"
@@ -19,7 +19,7 @@
     "static/js/runtime-main.f5cfbed7.js",
     "static/css/2.383c0125.chunk.css",
     "static/js/2.2bdd9040.chunk.js",
-    "static/css/main.86086752.chunk.css",
+    "static/css/main.b83bdc7f.chunk.css",
     "static/js/main.a29bcfdf.chunk.js"
   ]
 }
