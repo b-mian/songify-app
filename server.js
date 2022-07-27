@@ -73,7 +73,7 @@ app.post('/login', (req, res) => {
   })
 })
 
-// port on which app is running locally
+// port on which app is running
 app.listen(process.env.PORT || 4000, () => {
   console.log(`Example app listening at port ${port}`);
 });
