@@ -112,8 +112,8 @@ const Forms = ({code}) => {
                 id: rec.id
             }
           }));
-          playlist.push(song1);
-          playlist.push(song2);
+          //playlist.push(song1);
+          //playlist.push(song2);
         })
         .catch(err => {
             console.log("Something went wrong!", err);
