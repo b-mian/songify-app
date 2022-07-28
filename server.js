@@ -32,7 +32,7 @@ app.post('/refresh', (req, res) => {
   let credentials = {
     clientId: client_id,
     clientSecret: client_secret,
-    redirectUri: redirect_uri,
+    redirectUri: redirect_uri
   };
   const spotifyAPI = new SpotifyWebApi(credentials);
   spotifyAPI.refreshAccessToken().then(
@@ -54,7 +54,7 @@ app.post('/login', (req, res) => {
   let credentials = {
     clientId: client_id,
     clientSecret: client_secret,
-    redirectUri: redirect_uri,
+    redirectUri: redirect_uri
   };
   const spotifyAPI = new SpotifyWebApi(credentials);
   spotifyAPI
