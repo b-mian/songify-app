@@ -98,7 +98,8 @@ const Forms = ({code}) => {
             seed_artists: [song1.artistID, song2.artistID],
             seed_genres: [],
             seed_tracks: [song1.id, song2.id],
-            min_popularity: 60
+            limit: 30,
+            min_popularity: 75
         })
         .then(res => {
           let recommendations = res.body.tracks;
@@ -111,7 +112,8 @@ const Forms = ({code}) => {
                 id: rec.id
             }
           }));
-          
+          playlist.push(song1);
+          playlist.push(song2);
         })
         .catch(err => {
             console.log("Something went wrong!", err);
@@ -130,7 +132,7 @@ const Forms = ({code}) => {
             const playlistID = data.body.id;
             spotifyAPI.addTracksToPlaylist(playlistID, playlist.map(track => track.uri))
             .then(res => {
-                alert('Added tracks to playlist!');
+                alert('Added tracks to playlist! Enjoy!');
             })
             .catch(err => {
                 console.log(err);
@@ -146,10 +148,9 @@ const Forms = ({code}) => {
         <div className="forms-container">
             <h1 className="landing-title">Playful</h1>
             <h3 className="landing-subheading">Custom playlists based on two songs of your choice</h3>
-            <h4 className="landing-subheading">View track metadata of your new playlist</h4>
-            <form className="search-form">
+            <form className="search-form mt-3">
                 <div className="form-group mt-4">
-                    <label for="track1">Choose Track 1</label>
+                    <label className="track-form-label" for="track1">First Song</label>
                     <input type="text" className="form-control mt-3" onChange={e => setSearch1(e.target.value)} id="track1" placeholder="Search Spotify"></input>
                 </div>
                 {song1 === null ?
@@ -174,7 +175,7 @@ const Forms = ({code}) => {
 
                 }
                 <div className="form-group mt-4">
-                    <label for="track2">Choose Track 2</label>
+                    <label className="track-form-label" for="track2">Second Song</label>
                     <input type="text" className="form-control mt-3" id="track2" onChange={e => setSearch2(e.target.value)} placeholder="Search Spotify"></input>
                 </div>
                 {song2 === null ?

@@ -95,11 +95,22 @@ li {
 
 .form-control {
     width: 50vw;
+    height: 50px !important;
+    font-weight: 400;
+}
+
+.form-control:focus {
+    border: 4px solid lightgreen;
 }
 
 .form-group option {
     width: 50vw;
     height: 128px;
+}
+
+.form-group {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: bold;
 }
 
 .tracks-container {
@@ -130,7 +141,7 @@ li {
     float: right;
     margin-top: -2px;
     font-weight: bolder;
-    color: rgb(121, 59, 59);
+    color: rgb(22, 78, 22);
 }
 
 .playlist-container {
@@ -161,6 +172,9 @@ li {
 .track-title {
     margin-left: 30px !important;
     z-index: 10;
+}
+.track-form-label {
+    color: rgb(140, 220, 140);
 }
 
 .track-title, .track-artist {
@@ -207,19 +221,21 @@ li {
         margin-left: 2.5vw;
     }
 
-    .login-btn-container {
-        margin-bottom: 30px !important;
-    }
+    
     
 }
 
 @media screen and (max-width: 376px) {
     .headphone {
-        width: 280px !important;
-        height: 280px !important;
+        width: 220px !important;
+        height: 200px !important;
     }
 
     .landing-title {
         font-size: 52px;
+    }
+
+    .landing-container, .forms-container {
+        min-height: 100vh;
     }
 }

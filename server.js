@@ -28,7 +28,7 @@ app.get('*', (request, response) => {
 });
 
 app.post('/refresh', (req, res) => {
-  const refreshToken = req.body.refreshToken;
+  //CHANGE REDIRECT_URI BACK AFTER
   let credentials = {
     clientId: client_id,
     clientSecret: client_secret,
@@ -51,11 +51,10 @@ app.post('/refresh', (req, res) => {
 
 app.post('/login', (req, res) => {
   const code = req.body.code;
-  console.log("Logging IN");
   let credentials = {
     clientId: client_id,
     clientSecret: client_secret,
-    redirectUri: redirect_uri
+    redirectUri: redirect_uri,
   };
   const spotifyAPI = new SpotifyWebApi(credentials);
   spotifyAPI
