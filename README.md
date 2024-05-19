@@ -1,6 +1,6 @@
 # Playful-Music
 
- Create custom playlists based on two songs selected by you, the user!
+ Create and export custom Spotify playlists based on two songs selected by you, the user!
  
  Tools Used: HTML5, CSS3, React-Bootstrap, React, ES6 Javascript, Node.js, Express, Spotify API and Git
 
