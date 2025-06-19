@@ -7,7 +7,7 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import spotify from './spotify.png';
 // create new instance of Spotify API with given client credentials
 const spotifyAPI = new SpotifyWebApi({
-    clientId: "4362dfe6f5c244dbbc69cff0883518c4", 
+    clientId: process.env.client_id, 
 });
 
 const Forms = ({code}) => {
